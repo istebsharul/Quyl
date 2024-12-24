@@ -13,6 +13,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'success', message: 'API is healthy!' });
+});
+
 app.use('/api/students', studentRoutes);
 
 const PORT = process.env.PORT || 5000;
